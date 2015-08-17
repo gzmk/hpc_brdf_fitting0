@@ -42,7 +42,7 @@ function costIm = renderIm_1params(var)
 % THIS IS FOR MONOCHROMATIC RENDERING
 
 % % This is for fixing rho_s and rho_d and only fitting alpha
-fixed1 = 0;
+fixed1 = getGlobalros;
 fixed2 = getGlobalrod;
 sprintf('Fixed rho_s: %f fixed rho_d: %f', fixed1, fixed2)
 % ro_s = fixed1/(fixed1+fixed2);
@@ -58,6 +58,7 @@ alphau = var(1); % alphau and alphav should always be the same value for isotrop
 light = ['300:', num2str(fixed1+fixed2), ' 800:',num2str(fixed1+fixed2)];
 mycell = {ro_s, ro_d, alphau,light};
 
+one_val
 T = cell2table(mycell, 'VariableNames', {'ro_s' 'ro_d' 'alphau' 'light'});
 writetable(T,'/scratch/gk925/hpc_brdf_fitting0/sphere_3params_Conditions.txt','Delimiter','\t')
 %% Rendering bit

@@ -25,6 +25,8 @@ bestfit_1pr = [];
 
 fitname1 = '0percent_2param.mat';
 fitname2 = '0percent_1param.mat';
+param_name = 'param_vals.mat';
+
 for i = 1:iter
     
     [XBest2,BestF2,Iters2] = Grid_Search(2, LB_2', UB_2', NumDiv_2, MinDeltaX_2, 1e-7, 1000, 'renderIm_2params');
@@ -66,6 +68,11 @@ for i = 1:iter
         break
     end
 
+    one_param_vals = getGlobal_oneparam;
+    two_param_vals = getGlobal_twoparam;
+    imname2 = strcat('/scratch/gk925/hpc_brdf_fitting0/fit_results/multispectral/', param_name);
+    save(imname2, 'one_param_vals','two_param_vals');
+    
     
 end
 
